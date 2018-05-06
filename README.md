@@ -6,7 +6,7 @@ This work tries to introduct 3D models into Convolutional Neural Networks by lea
 
 ![alt text](https://github.com/pharish93/FaceDetection/blob/master/Reports/netowrk_sections.png "Netowork Architecture")
 
-In this work is an extension of the Faster RCNN architecture, 
+This work is an extension of the Faster RCNN architecture, 
 The proposed method addresses two issues in adapting the the Faster RCNN architecture for face detection: 
 1. One is to eliminate the heuristic design of predefined anchor boxes in the region proposals network (RPN) by exploiting a 3D mean face model. 
 2. The other is to replace the generic RoI (Region-of-Interest) pooling layer with a configuration pooling layer to respect underlying object structures.
@@ -18,7 +18,7 @@ Documentation for this implementation can be found in the Reports folder
 ## Prerequisites 
 ### Environment 
 
-This code in **python 2.7** and is build unsing *Mxnet 1.0 with CUDA 8.0*  . This code uses custom operators, hence it is compulsory to rebuld the framework from sources. 
+This code is in **python 2.7** and is build unsing *Mxnet 1.0 with CUDA 8.0*  . This code uses custom operators, hence it is compulsory to rebuld the framework from sources. 
 
 Please refer to the instruction in https://mxnet.incubator.apache.org/install/index.html for the installation steps. 
 Once the build is complete, make ready the python wrappers using these commands 
@@ -29,7 +29,7 @@ cp -rf incubator-mxnet/python/mxnet/ mxnet
 cp -f incubator-mxnet/lib/* mxnet/mxnet
 cp -f incubator-mxnet/nnvm/lib/* mxnet/
 ```
-In addition the code opencv 2.4.11 for a few preprocessing and visualization tasks. Please make sure it is present in your enviroment. 
+In addition, opencv 2.4.11 is used for a few preprocessing and visualization tasks. Please make sure it is present in your enviroment along with easyDict. 
 
 ### Data Set
 
