@@ -4,10 +4,12 @@
 In this work I make an attempt to reimplement the paper " Face Detection with End-to-End Integration of a ConvNet and a 3D Model " ( https://arxiv.org/abs/1606.00850 ) 
 This work tries to introduct 3D models into Convolutional Neural Networks by learning the projection parameters from a 3D mean face. 
 
-In this work is an extension of the Faster RCNN architecture, 
+![alt text](https://github.com/pharish93/FaceDetection/blob/master/Reports/netowrk_sections.png "Netowork Architecture")
+
+This work is an extension of the Faster RCNN architecture, 
 The proposed method addresses two issues in adapting the the Faster RCNN architecture for face detection: 
-* (i) One is to eliminate the heuristic design of predefined anchor boxes in the region proposals network (RPN) by exploiting a 3D mean face model. 
-* (ii) The other is to replace the generic RoI (Region-of-Interest) pooling layer with a configuration pooling layer to respect underlying object structures.
+1. One is to eliminate the heuristic design of predefined anchor boxes in the region proposals network (RPN) by exploiting a 3D mean face model. 
+2. The other is to replace the generic RoI (Region-of-Interest) pooling layer with a configuration pooling layer to respect underlying object structures.
 
 Original Implementation of this work can be found at - https://github.com/tfwu/FaceDetection-ConvNet-3D  , Please acknowledge the orginal work if you happen to use this code.
 
@@ -16,7 +18,7 @@ Documentation for this implementation can be found in the Reports folder
 ## Prerequisites 
 ### Environment 
 
-This code in **python 2.7** and is build unsing *Mxnet 1.0 with CUDA 8.0*  . This code uses custom operators, hence it is compulsory to rebuld the framework from sources. 
+This code is in **python 2.7** and is build unsing *Mxnet 1.0 with CUDA 8.0*  . This code uses custom operators, hence it is compulsory to rebuld the framework from sources. 
 
 Please refer to the instruction in https://mxnet.incubator.apache.org/install/index.html for the installation steps. 
 Once the build is complete, make ready the python wrappers using these commands 
@@ -27,7 +29,7 @@ cp -rf incubator-mxnet/python/mxnet/ mxnet
 cp -f incubator-mxnet/lib/* mxnet/mxnet
 cp -f incubator-mxnet/nnvm/lib/* mxnet/
 ```
-In addition the code opencv 2.4.11 for a few preprocessing and visualization tasks. Please make sure it is present in your enviroment. 
+In addition, opencv 2.4.11 is used for a few preprocessing and visualization tasks. Please make sure it is present in your enviroment along with easyDict. 
 
 ### Data Set
 
@@ -50,9 +52,9 @@ All the code is present in Face_3D_Models/face_3d folder. The code is organised 
 * /uilts - all visualizaions and other utility functions 
 
 ### Demo 
-Markup : 1. Build the mxnet framework from sources using the files in incubator-mxnet
-         2. Please download the pretrained model - https://drive.google.com/drive/folders/1bwnT6Q2UFRoDEzZYYEo-t3iJaNzD8VvI?usp=sharing 
-         3. Run the demo.py file 
+1. Build the mxnet framework from sources using the files in incubator-mxnet
+2. Please download the pretrained model - https://drive.google.com/drive/folders/1bwnT6Q2UFRoDEzZYYEo-t3iJaNzD8VvI?usp=sharing 
+3. Run the demo.py file 
 
 ## Contact Infromation 
 If any issue, please contact me : Harish Pullagurla - hpullag@ncsu.edu 
