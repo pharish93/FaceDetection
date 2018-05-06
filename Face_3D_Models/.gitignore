@@ -1,8 +1,3 @@
-*.params
-data/*
-model/*
-mxnet/*.a
-mxnet/*.so
 .idea/*.xml
 *.png
 

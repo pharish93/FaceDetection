@@ -47,7 +47,7 @@ def get_N_HexCol(N=5):
     # return all_rgb
     return pallete
 
-def make_heat_map(image_arr,K,nbatch):
+def make_heat_map(image_arr,K,nbatch,op_filename =None):
     a = image_arr.shape
     center = get_N_HexCol(K)
     center = np.uint8(center)
@@ -55,7 +55,8 @@ def make_heat_map(image_arr,K,nbatch):
     res = center[image_arr.flatten()]
     res2 = res.reshape((a[0],a[1],3))
 
-    op_filename = './heatmaps/heatmap' + str(nbatch) + '.png'
+    if op_filename == None:
+        op_filename = './heatmaps/heatmap' + str(nbatch) + '.png'
     cv2.imwrite(op_filename, res2)
 
 import copy
@@ -85,7 +86,7 @@ def vis_proposals(ima_arr,labels,pred,nbatch):
     op_filename = './proposals/draw_proposals' + str(nbatch) + '.png'
     cv2.imwrite(op_filename, img)
 
-def vis_proposal_after_nms(img_arr,gt,bbox,nbatch):
+def vis_proposal_after_nms(img_arr,gt,bbox,nbatch, op_filename = None):
     img = img_arr[0]
     img = np.swapaxes(img, 2, 0)
     img = np.swapaxes(img, 1, 0)
@@ -95,5 +96,6 @@ def vis_proposal_after_nms(img_arr,gt,bbox,nbatch):
         box = bbox[0][round(element[0] / 2)][round(element[1] / 2)][:]
         cv2.rectangle(img, (box[1], box[0]), (box[1]+box[3], box[0]+box[2]), (0, 255, 0), 1)
 
-    op_filename = './proposals/draw_proposals_afternms' + str(nbatch) + '.png'
+    if op_filename == None:
+        op_filename = './proposals/draw_proposals_afternms' + str(nbatch) + '.png'
     cv2.imwrite(op_filename, img)

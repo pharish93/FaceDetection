@@ -94,10 +94,10 @@ def get_keypoints_projection(relu_feature, mean_face, proj_weight, proj_label):
     )
 
     face3dproj_block = mx.symbol.BlockGrad(data=face3dproj, name="face3dproj_block")
-    # box_predict = mx.symbol.BoxPredict(*[face3dproj_block], name="box_predict")
+    box_predict = mx.symbol.BoxPredict(*[face3dproj_block], name="box_predict")
 
-    # return box_predict, proj_regression_loss
-    return proj_regression_loss
+    return box_predict, proj_regression_loss
+    # return proj_regression_loss
 
 def do_roi_pooling(relu_feature, box_predict, ground_truth):
     roi_warping = mx.symbol.ROIWarping(*[relu_feature, box_predict, ground_truth], warped_shape=(28, 28),
@@ -167,8 +167,9 @@ def get_vgg_train():
     proposal_cls_loss = get_confidence_map(relu_feature, cls_label)
 
     # face keypoints projection
-    proj_regression_loss = get_keypoints_projection(relu_feature, mean_face, proj_weight, proj_label)
-    # ell_label = mx.symbol.GenEllLabel(*[box_predict, ellipse_label, ground_truth], spatial_scale=0.5, name="ell_label")
+    box_predict, proj_regression_loss = get_keypoints_projection(relu_feature, mean_face, proj_weight, proj_label)
+    ell_label = mx.symbol.GenEllLabel(*[box_predict, ellipse_label, ground_truth], spatial_scale=0.5, name="ell_label")
+
     #
     # # roi warping
     #
@@ -186,8 +187,8 @@ def get_vgg_train():
     # )
 
     # loss_all = mx.symbol.Group([proposal_cls_loss, proj_regression_loss, ellipse_predict_loss, ell_label, box_predict])
-    # loss_all = mx.symbol.Group([proposal_cls_loss, proj_regression_loss, box_predict])
-    loss_all = mx.symbol.Group([proposal_cls_loss, proj_regression_loss])
+    loss_all = mx.symbol.Group([proposal_cls_loss, proj_regression_loss, box_predict])
+    # loss_all = mx.symbol.Group([proposal_cls_loss, proj_regression_loss])
 
     # loss_all = mx.symbol.Group([proj_regression_loss])
 
