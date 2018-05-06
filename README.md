@@ -4,10 +4,12 @@
 In this work I make an attempt to reimplement the paper " Face Detection with End-to-End Integration of a ConvNet and a 3D Model " ( https://arxiv.org/abs/1606.00850 ) 
 This work tries to introduct 3D models into Convolutional Neural Networks by learning the projection parameters from a 3D mean face. 
 
+![alt text](https://github.com/pharish93/FaceDetection/blob/master/Reports/netowrk_sections.png "Netowork Architecture")
+
 In this work is an extension of the Faster RCNN architecture, 
 The proposed method addresses two issues in adapting the the Faster RCNN architecture for face detection: 
-* (i) One is to eliminate the heuristic design of predefined anchor boxes in the region proposals network (RPN) by exploiting a 3D mean face model. 
-* (ii) The other is to replace the generic RoI (Region-of-Interest) pooling layer with a configuration pooling layer to respect underlying object structures.
+1. One is to eliminate the heuristic design of predefined anchor boxes in the region proposals network (RPN) by exploiting a 3D mean face model. 
+2. The other is to replace the generic RoI (Region-of-Interest) pooling layer with a configuration pooling layer to respect underlying object structures.
 
 Original Implementation of this work can be found at - https://github.com/tfwu/FaceDetection-ConvNet-3D  , Please acknowledge the orginal work if you happen to use this code.
 
@@ -50,9 +52,9 @@ All the code is present in Face_3D_Models/face_3d folder. The code is organised 
 * /uilts - all visualizaions and other utility functions 
 
 ### Demo 
-Markup : 1. Build the mxnet framework from sources using the files in incubator-mxnet
-         2. Please download the pretrained model - https://drive.google.com/drive/folders/1bwnT6Q2UFRoDEzZYYEo-t3iJaNzD8VvI?usp=sharing 
-         3. Run the demo.py file 
+1. Build the mxnet framework from sources using the files in incubator-mxnet
+2. Please download the pretrained model - https://drive.google.com/drive/folders/1bwnT6Q2UFRoDEzZYYEo-t3iJaNzD8VvI?usp=sharing 
+3. Run the demo.py file 
 
 ## Contact Infromation 
 If any issue, please contact me : Harish Pullagurla - hpullag@ncsu.edu 
